@@ -1,11 +1,11 @@
 ﻿# Release Notes
 
-## 2.0-SNAPSHOT (2014-MM-DD)
+## 2.0 (2014-05-23)
 This major release introduces several significant changes:
 
 * Adapt project POM for GitHub hosting.
 * Refer to parent POM (org.opengis.cite:ets-common).
-* Add site content to archetype (also incorporated within the ctl-scripts assembly).
+* Add site content (also incorporated within the ctl-scripts assembly).
 * Move assembly descriptors to standard location.
 * Add unit test to verify results produced by TestNGController.
 * Change license to Apache License, Version 2.0.
