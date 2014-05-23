@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20140523" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Test Suite Archetype - TestNG Framework - Test Suite Archetype - TestNG Framework</title>
+    <title>Test Suite Archetype - TestNG Framework - Release Notes</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.1.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -60,17 +60,17 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Getting Started</li>
                               
-      <li class="active">
-  
-            <a href="#"><i class="none"></i>Overview</a>
-          </li>
-                
       <li>
   
-                          <a href="changelog.html" title="Release Notes">
+                          <a href="index.html" title="Overview">
           <i class="none"></i>
-        Release Notes</a>
+        Overview</a>
             </li>
+                
+      <li class="active">
+  
+            <a href="#"><i class="none"></i>Release Notes</a>
+          </li>
             </ul>
                 
                     
@@ -92,20 +92,37 @@
                 
         <div id="bodyColumn"  class="span9" >
                                   
-            <h1>Test Suite Archetype - TestNG Framework</h1>
-<p>This Maven archetype serves as a template for creating a new executable test suite (ETS) based on the <a class="externalLink" href="http://testng.org/">TestNG framework</a>. It enables a test developer to quickly generate a test suite and start adding tests to verify conformance to one or more specifications. The Maven coordinates of the archetype are shown below.</p>
+            <h1>Release Notes</h1>
+<div class="section">
+<h2>2.0 (2014-05-23)<a name="a2.0_2014-05-23"></a></h2>
+<p>This major release introduces several significant changes:</p>
 
-<div class="source">
-<pre>&lt;groupId&gt;org.opengis.cite&lt;/groupId&gt;
-&lt;artifactId&gt;ets-archetype-testng&lt;/artifactId&gt;
-&lt;version&gt;2.0&lt;/version&gt;
-</pre></div>
-<p>To create a new test suite just call the interactive <tt>archetype:generate</tt> goal and specify the required &#x201c;ets-code&#x201d; property, the value of which must be a legal Java package name. For example:</p>
+<ul>
+  
+<li>Adapt project POM for GitHub hosting.</li>
+  
+<li>Refer to parent POM (org.opengis.cite:ets-common).</li>
+  
+<li>Add site content (also incorporated within the ctl-scripts assembly).</li>
+  
+<li>Move assembly descriptors to standard location.</li>
+  
+<li>Add unit test to verify results produced by TestNGController.</li>
+  
+<li>Change license to Apache License, Version 2.0.</li>
+</ul></div>
+<div class="section">
+<h2>1.3 (2014-04-07)<a name="a1.3_2014-04-07"></a></h2>
+<p>This minor release includes the following updates:</p>
 
-<div class="source">
-<pre>mvn archetype:generate -DarchetypeGroupId=org.opengis.cite -Dets-code=alpha
-</pre></div>
-<p>Several prompts will ask for various property values in order to generate the test suite project. The suggested default values may be modified if desired. </p>
+<ul>
+  
+<li>Refactor or fix various utility methods.</li>
+  
+<li>Amend Javadoc overview, schema catalog.</li>
+  
+<li>Update dependencies (of generated artifact).</li>
+</ul></div>
                   </div>
             </div>
           </div>
