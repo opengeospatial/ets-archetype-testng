@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 2.1 (2014-MM-DD)
+This minor update incorporates the following changes:
+
+* Add method ValidationUtils#createSchemaResolver.
+
 ## 2.0 (2014-05-23)
 This major release introduces several significant changes:
 
