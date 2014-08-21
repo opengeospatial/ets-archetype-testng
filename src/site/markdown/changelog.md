@@ -1,9 +1,12 @@
 ﻿# Release Notes
 
-## 2.1 (2014-MM-DD)
+## 2.1 (2014-08-21)
 This minor update incorporates the following changes:
 
+* Use latest parent POM (ets-common-2).
 * Add method ValidationUtils#createSchemaResolver.
+* Update assembly descriptor (ctl-scripts).
+
 
 ## 2.0 (2014-05-23)
 This major release introduces several significant changes:
