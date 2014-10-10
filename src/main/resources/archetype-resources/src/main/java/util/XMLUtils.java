@@ -4,15 +4,22 @@
 package ${package}.util;
 
 import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -47,6 +54,16 @@ import org.w3c.dom.NodeList;
  * representations.
  */
 public class XMLUtils {
+
+    private static final Logger LOGR = Logger.getLogger(XMLUtils.class
+            .getPackage().getName());
+    private static final XMLInputFactory STAX_FACTORY = initXMLInputFactory();
+
+    private static XMLInputFactory initXMLInputFactory() {
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        factory.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
+        return factory;
+    }
 
     /**
      * Writes the content of a DOM Node to a String. The XML declaration is
@@ -286,5 +303,29 @@ public class XMLUtils {
             throw new RuntimeException(e);
         }
         return resultDoc;
+    }
+
+    /**
+     * Expands character entity (&name;) and numeric references (&#xhhhh; or
+     * &dddd;) that occur within a given string value. It may be necessary to do
+     * this before processing an XPath expression.
+     * 
+     * @param value
+     *            A string representing text content.
+     * @return A string with all included references expanded.
+     */
+    public static String expandReferencesInText(String value) {
+        StringBuilder wrapper = new StringBuilder("<value>");
+        wrapper.append(value).append("</value>");
+        Reader reader = new StringReader(wrapper.toString());
+        String str = null;
+        try {
+            XMLStreamReader xsr = STAX_FACTORY.createXMLStreamReader(reader);
+            xsr.nextTag(); // document element
+            str = xsr.getElementText();
+        } catch (XMLStreamException xse) {
+            LOGR.log(Level.WARNING, xse.getMessage(), xse);
+        }
+        return str;
     }
 }
