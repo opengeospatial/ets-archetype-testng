@@ -58,6 +58,12 @@ public class XMLUtils {
     private static final Logger LOGR = Logger.getLogger(XMLUtils.class
             .getPackage().getName());
     private static final XMLInputFactory STAX_FACTORY = initXMLInputFactory();
+    private static final XPathFactory XPATH_FACTORY = initXPathFactory();
+
+    private static XPathFactory initXPathFactory() {
+        XPathFactory factory = XPathFactory.newInstance();
+        return factory;
+    }
 
     private static XMLInputFactory initXMLInputFactory() {
         XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -144,13 +150,24 @@ public class XMLUtils {
     public static NodeList evaluateXPath(Node context, String expr,
             Map<String, String> namespaceBindings)
             throws XPathExpressionException {
-        return (NodeList) evaluateXPath(context, expr, namespaceBindings,
+        Object result = evaluateXPath(context, expr, namespaceBindings,
                 XPathConstants.NODESET);
+        if (!NodeList.class.isInstance(result)) {
+            throw new XPathExpressionException(
+                    "Expression does not evaluate to a NodeList: " + expr);
+        }
+        return (NodeList) result;
     }
 
     /**
-     * Evaluates an XPath 1.0 expression using the given context and returns the
+     * Evaluates an XPath expression using the given context and returns the
      * result as the specified type.
+     * 
+     * <p>
+     * <strong>Note:</strong> The Saxon implementation supports XPath 2.0
+     * expressions when using the JAXP XPath APIs (the default implementation
+     * will throw an exception).
+     * </p>
      * 
      * @param context
      *            The context node.
@@ -173,9 +190,13 @@ public class XMLUtils {
             throws XPathExpressionException {
         NamespaceBindings bindings = NamespaceBindings.withStandardBindings();
         bindings.addAllBindings(namespaceBindings);
-        XPath xpath = XPathFactory.newInstance().newXPath();
+        XPathFactory factory = XPATH_FACTORY;
+        // WARNING: If context node is Saxon NodeOverNodeInfo, the factory must
+        // use the same Configuration object to avoid IllegalArgumentException
+        XPath xpath = factory.newXPath();
         xpath.setNamespaceContext(bindings);
-        return xpath.evaluate(expr, context, returnType);
+        Object result = xpath.evaluate(expr, context, returnType);
+        return result;
     }
 
     /**
