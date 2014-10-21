@@ -81,7 +81,7 @@
           <entry key="iut">
             <xsl:choose>
               <xsl:when test="empty($iut-file)">
-                <xsl:value-of select="${symbol_dollar}form-data/values/value[@key='uri']"/>
+                <xsl:value-of select="normalize-space(${symbol_dollar}form-data/values/value[@key='uri'])"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:copy-of select="concat('file:///', $iut-file)" />

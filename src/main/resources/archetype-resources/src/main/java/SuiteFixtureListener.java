@@ -13,7 +13,6 @@ import ${package}.util.TestSuiteLogger;
 import ${package}.util.URIUtils;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
-import org.testng.Reporter;
 import org.w3c.dom.Document;
 
 /**
@@ -38,9 +37,6 @@ public class SuiteFixtureListener implements ISuiteListener {
 
     @Override
     public void onFinish(ISuite suite) {
-        Reporter.clear(); // clear output from previous test runs
-        Reporter.log("Test suite parameters:");
-        Reporter.log(suite.getXmlSuite().getAllParameters().toString());
     }
 
     /**
