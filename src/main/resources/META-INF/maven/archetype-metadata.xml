@@ -7,7 +7,7 @@
   <requiredProperties>
     <requiredProperty key="ets-code" />
     <requiredProperty key="ets-title">
-      <defaultValue>Test suite ets-${ets-code}</defaultValue>
+      <defaultValue>Test suite: ets-${ets-code}</defaultValue>
     </requiredProperty>
     <requiredProperty key="groupId">
       <defaultValue>org.opengis.cite</defaultValue>
@@ -17,6 +17,9 @@
     </requiredProperty>
     <requiredProperty key="package">
       <defaultValue>org.opengis.cite.${ets-code}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="version">
+      <defaultValue>1-SNAPSHOT</defaultValue>
     </requiredProperty>
   </requiredProperties>
   <fileSets>
