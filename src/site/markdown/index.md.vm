@@ -17,8 +17,8 @@ The Maven coordinates of the archetype are shown below.
 To create a new test suite just call the interactive __archetype:generate__ 
 goal and specify the required `ets-code` property, the value of which must 
 be a legal Java package name. For OGC test suites the convention is to 
-identify the principal specification by version as ${spec-abbreviation}${major+minor} 
-(e.g. wfs20, cat30). For example:
+identify the principal specification by major and minor version (e.g. wfs20, 
+cat30). For example:
 
     mvn archetype:generate -Dfilter=org.opengis.cite:ets-archetype-testng -Dets-code=alpha10
 
