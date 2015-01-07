@@ -1,9 +1,10 @@
 ﻿# Release Notes
 
-## 2.3 (2014-12-DD)
+## 2.3 (2015-01-07)
 This minor update includes the following changes:
 
 * Use latest release of the common POM (v3).
+* Update site documentation.
 
 ## 2.2 (2014-10-30)
 This update incorporates the following noteworthy changes:

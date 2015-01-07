@@ -4,19 +4,21 @@
 This Maven archetype serves as a template for creating a new executable test 
 suite (ETS) based on the [TestNG framework](http://testng.org/). It enables 
 a test developer to quickly generate a test suite and start adding tests to 
-verify conformance to one or more specifications. The Maven coordinates of 
-the archetype are shown below.
+verify that a test subject &#x2013; such as a web service or a data 
+representation &#x2013; conforms to one or more specifications.
+
+## How to use it
+The Maven coordinates of the archetype are shown below.
 
     <groupId>org.opengis.cite</groupId>
     <artifactId>ets-archetype-testng</artifactId>
     <version>${project.version}</version>
 
-## How to use it
-To create a new test suite just call the interactive `archetype:generate` goal 
-and specify the required "ets-code" property, the value of which must be a 
-legal Java package name. For example:
+To create a new test suite just call the interactive __archetype:generate__ 
+goal and specify the required `ets-code` property, the value of which must 
+be a legal Java package name. For example:
 
-    mvn archetype:generate -DarchetypeGroupId=org.opengis.cite -Dets-code=alpha
+    mvn archetype:generate -Dfilter=org.opengis.cite:ets-archetype-testng -Dets-code=alpha
 
 Several prompts will ask for various property values in order to generate the 
 test suite project. The suggested default values may be modified if desired. 
