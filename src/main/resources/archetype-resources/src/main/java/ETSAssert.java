@@ -3,9 +3,11 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
+import com.sun.jersey.api.client.ClientResponse;
 import java.net.URL;
 import java.util.Map;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMResult;
@@ -16,12 +18,12 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import ${package}.util.NamespaceBindings;
-import ${package}.util.TestSuiteLogger;
 import ${package}.util.XMLUtils;
 import org.opengis.cite.validation.SchematronValidator;
 import org.opengis.cite.validation.ValidationErrorHandler;
 import org.testng.Assert;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -30,6 +32,9 @@ import org.w3c.dom.NodeList;
  */
 public class ETSAssert {
 
+	private static final Logger LOGR = Logger.getLogger(
+            ETSAssert.class.getPackage().getName());
+	
     private ETSAssert() {
     }
 
@@ -85,13 +90,19 @@ public class ETSAssert {
         } catch (XPathExpressionException xpe) {
             String msg = ErrorMessage
                     .format(ErrorMessageKeys.XPATH_ERROR, expr);
-            TestSuiteLogger.log(Level.WARNING, msg, xpe);
+            LOGR.log(Level.WARNING, msg, xpe);
             throw new AssertionError(msg);
+        }
+        Element elemNode;
+        if (Document.class.isInstance(context)) {
+            elemNode = Document.class.cast(context).getDocumentElement();
+        } else {
+            elemNode = (Element) context;
         }
         Assert.assertTrue(
                 result,
                 ErrorMessage.format(ErrorMessageKeys.XPATH_RESULT,
-                        context.getNodeName(), expr));
+                        elemNode.getNodeName(), expr));
     }
 
     /**
@@ -162,5 +173,46 @@ public class ETSAssert {
                 elementName.getNamespaceURI(), elementName.getLocalPart());
         Assert.assertEquals(features.getLength(), expectedCount, String.format(
                 "Unexpected number of %s descendant elements.", elementName));
+    }
+    
+    /**
+     * Asserts that the given response message contains an OGC exception report.
+     * The message body must contain an XML document that has a document element
+     * with the following properties:
+     *
+     * <ul>
+     * <li>[local name] = "ExceptionReport"</li>
+     * <li>[namespace name] = "http://www.opengis.net/ows/2.0"</li>
+     * </ul>
+     *
+     * @param rsp A ClientResponse object representing an HTTP response message.
+     * @param exceptionCode The expected OGC exception code.
+     * @param locator A case-insensitive string value expected to occur in the
+     * locator attribute (e.g. a parameter name); the attribute value will be
+     * ignored if the argument is null or empty.
+     */
+    public static void assertExceptionReport(ClientResponse rsp,
+            String exceptionCode, String locator) {
+        Assert.assertEquals(rsp.getStatus(),
+                ClientResponse.Status.BAD_REQUEST.getStatusCode(),
+                ErrorMessage.get(ErrorMessageKeys.UNEXPECTED_STATUS));
+        Document doc = rsp.getEntity(Document.class);
+        String expr = String.format("//ows:Exception[@exceptionCode = '%s']",
+                exceptionCode);
+        NodeList nodeList = null;
+        try {
+            nodeList = XMLUtils.evaluateXPath(doc, expr, null);
+        } catch (XPathExpressionException xpe) {
+            // won't happen
+        }
+        Assert.assertTrue(nodeList.getLength() > 0,
+                "Exception not found in response: " + expr);
+        if (null != locator && !locator.isEmpty()) {
+            Element exception = (Element) nodeList.item(0);
+            String locatorValue = exception.getAttribute("locator").toLowerCase();
+            Assert.assertTrue(locatorValue.contains(locator.toLowerCase()),
+                    String.format("Expected locator attribute to contain '%s']",
+                            locator));
+        }
     }
 }

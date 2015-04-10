@@ -3,6 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
+import com.sun.jersey.api.client.Client;
 import org.w3c.dom.Document;
 
 /**
@@ -12,6 +13,10 @@ import org.w3c.dom.Document;
 @SuppressWarnings("rawtypes")
 public enum SuiteAttribute {
 
+	/**
+     * A client component for interacting with HTTP endpoints.
+     */
+    CLIENT("httpClient", Client.class),
     /**
      * A DOM Document representation of the test subject or metadata about it.
      */

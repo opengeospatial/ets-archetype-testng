@@ -3,11 +3,13 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
+import com.sun.jersey.api.client.Client;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 import java.util.logging.Level;
+import ${package}.util.ClientUtils;
 import ${package}.util.XMLUtils;
 import ${package}.util.TestSuiteLogger;
 import ${package}.util.URIUtils;
@@ -33,6 +35,7 @@ public class SuiteFixtureListener implements ISuiteListener {
     @Override
     public void onStart(ISuite suite) {
         processSuiteParameters(suite);
+        registerClientComponent(suite);
     }
 
     @Override
@@ -80,6 +83,20 @@ public class SuiteFixtureListener implements ISuiteListener {
             logMsg.append(iutRef).append("\n");
             logMsg.append(XMLUtils.writeNodeToString(iutDoc));
             TestSuiteLogger.log(Level.FINE, logMsg.toString());
+        }
+    }
+
+    /**
+     * A client component is added to the suite fixture as the value of the
+     * {@link SuiteAttribute#CLIENT} attribute; it may be subsequently accessed
+     * via the {@link org.testng.ITestContext#getSuite()} method.
+     *
+     * @param suite The test suite instance.
+     */
+    void registerClientComponent(ISuite suite) {
+        Client client = ClientUtils.buildClient();
+        if (null != client) {
+            suite.setAttribute(SuiteAttribute.CLIENT.getName(), client);
         }
     }
 }

@@ -12,15 +12,13 @@ import org.testng.annotations.Test;
  */
 public class Capability2Tests {
 
-    /**
-     * Run conformance level 2 tests only if the generated value exceeds the
-     * threshold value.
+	/**
+     * Run conformance level 2 tests only if the preconditions are satisfied.
      */
     @BeforeTest
-    public void checkThresholdExceeded() {
-        double rnd = Math.random();
-        Assert.assertTrue(rnd > 0.9,
-                "Trigger value does not exceed threshold: " + rnd);
+    public void checkPreconditions() {
+        Assert.assertTrue(2 > 1,
+                "Preconditions for Conformance Level 2 were not satisfied.");
     }
 
     /**
