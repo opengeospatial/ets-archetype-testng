@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
+import ${package}.CommonFixture;
 import ${package}.ErrorMessage;
 import ${package}.ErrorMessageKeys;
 import ${package}.SuiteAttribute;
@@ -22,7 +23,7 @@ import org.xml.sax.SAXException;
 /**
  * Includes various tests of capability 1.
  */
-public class Capability1Tests {
+public class Capability1Tests extends CommonFixture {
 
     private Document testSubject;
 

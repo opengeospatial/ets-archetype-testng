@@ -1,5 +1,14 @@
 ﻿# Release Notes
 
+## 2.4 (2015-04-13)
+This release includes the following notable changes:
+
+* Use the latest release of the common POM (ets-common-4)
+* Add `CommonFixture` (base class that sets up a common test fixture)
+* Add `TestFailureListener` (augments a test result with diagnostic information 
+in the event that a test method failed)
+* Add `ClientUtils` (provides utility methods for using the Jersey client API)
+
 ## 2.3 (2015-01-07)
 This minor update includes the following changes:
 

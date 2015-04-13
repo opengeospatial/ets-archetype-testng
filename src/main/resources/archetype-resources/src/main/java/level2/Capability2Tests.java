@@ -3,6 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.level2;
 
+import ${package}.CommonFixture;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ import org.testng.annotations.Test;
 /**
  * Includes various tests of capability 2.
  */
-public class Capability2Tests {
+public class Capability2Tests extends CommonFixture {
 
 	/**
      * Run conformance level 2 tests only if the preconditions are satisfied.
