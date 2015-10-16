@@ -4,8 +4,8 @@
 This update includes the following changes:
 
 * Use the latest version of the common POM (ets-common-5)
+* Add activePhase parameter to `ETSAssert#assertSchematronValid`
 * Add the importElement() and evaluateXQuery() methods to `XMLUtils`
-
 
 ## 2.4 (2015-04-13)
 This release includes the following notable changes:
