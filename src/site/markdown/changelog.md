@@ -4,6 +4,7 @@
 This update includes the following changes:
 
 * Use the latest version of the common POM (ets-common-5)
+* Delete temp files in `SuiteFixtureListener.onFinish` method
 * Add activePhase parameter to `ETSAssert#assertSchematronValid`
 * Add the importElement() and evaluateXQuery() methods to `XMLUtils`
 
