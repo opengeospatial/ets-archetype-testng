@@ -15,7 +15,8 @@ any implementation details.
 
 ![Set of relevant specifications](img/specifications.png)
 
-Several conformance classes are defined in the principal specification:
+Several conformance classes are defined in the principal specifications; the ones 
+listed below are covered by this test suite:
 
 * Class A 
     - List capabilities of conformance class A
@@ -30,6 +31,14 @@ conforming implementation.
 
 1. [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/)
 2. [Extensible Markup Language (XML) 1.0, Fifth Edition](http://www.w3.org/TR/xml/)
+3. [RFC 7231](https://tools.ietf.org/html/rfc7231) - Hypertext Transfer Protocol 
+(HTTP/1.1): Semantics and Content 
+
+If any of the following preconditions are not satisfied then all tests in the 
+suite will be marked as skipped.
+
+1. Precondition 1;
+2. Precondition 2.
 
 
 ${symbol_pound}${symbol_pound} Test suite structure
@@ -50,19 +59,11 @@ The general structure of the test suite is shown in Table 1.
   <tbody>
     <tr>
       <td>Conformance Level 1</td>
-      <td>
-        <ul>
-          <li>${package}.level1.Capability1Tests</li>
-        </ul>
-      </td>
+      <td>${package}.level1.*</td>
     </tr>
     <tr>
       <td>Conformance Level 2</td>
-      <td>
-        <ul>
-          <li>${package}.level2.Capability2Tests</li>
-        </ul>
-      </td>
+      <td>${package}.level2.*</td>
     </tr>
   </tbody>
 </table>

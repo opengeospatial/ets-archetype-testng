@@ -61,9 +61,9 @@ public class ETSAssert {
      * explicitly declared:
      * 
      * <ul>
-     * <li>ows: {@value org.opengis.cite.alpha10.Namespaces#OWS}</li>
-     * <li>xlink: {@value org.opengis.cite.alpha10.Namespaces#XLINK}</li>
-     * <li>gml: {@value org.opengis.cite.alpha10.Namespaces#GML}</li>
+     * <li>ows: {@value ${package}.Namespaces#OWS}</li>
+     * <li>xlink: {@value ${package}.Namespaces#XLINK}</li>
+     * <li>gml: {@value ${package}.Namespaces#GML}</li>
      * </ul>
      * 
      * @param expr
