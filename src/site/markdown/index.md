@@ -14,7 +14,7 @@ is always recommended):
 
     groupId: org.opengis.cite
     artifactId: ets-archetype-testng
-    version: 2.4
+    version: 2.5
 
 In order to use the archetype and build the resulting test suite a 
 [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/) 
@@ -27,14 +27,14 @@ To create a new test suite open a command shell (terminal window) and invoke the
 __archetype:generate__ goal. It is necessary to specify the `ets-code` property at this point, 
 the value of which must be a legal Java package name. For OGC test suites the convention is 
 to identify the principal specification by major and minor version: wfs20, cat30, and the 
-like. See Listing 1 for a sample invocation where the ets-code value is "alpha10"; note 
+like. See Listing 1 for a sample invocation where the ets-code value is "abc10"; note 
 that a '\' (backslash) character indicates that a line is continued.
 
 **Listing 1: Using the archetype interactively**
 
     mvn archetype:generate \
         -Dfilter=org.opengis.cite:ets-archetype-testng \
-        -Dets-code=alpha10
+        -Dets-code=abc10
 
 Several prompts will ask for various property values in order to generate the test suite 
 project. The suggested default values may be modified if desired. It is also possible to 
@@ -46,11 +46,11 @@ Listing 2.
     mvn archetype:generate -B \
         -DarchetypeGroupId=org.opengis.cite \
         -DarchetypeArtifactId=ets-archetype-testng \
-        -DarchetypeVersion=2.4 \
-        -Dets-code=alpha10 \
-        -DartifactId=ets-alpha10 \
-        -Dpackage=org.opengis.cite.alpha10
+        -DarchetypeVersion=2.5 \
+        -Dets-code=abc10 \
+        -DartifactId=ets-abc10 \
+        -Dpackage=org.opengis.cite.abc10
 
 Once the initial test suite has been created it must be modified to cover the 
-specific test requirements of interest. See the [TestNG Developer Guide](http://opengeospatial.github.io/teamengine/testers.html) 
+specific test requirements of interest. See the [TestNG Developer Guide](http://opengeospatial.github.io/teamengine/testng.html) 
 for more information about how to get started.

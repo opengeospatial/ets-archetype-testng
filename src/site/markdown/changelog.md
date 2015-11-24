@@ -1,6 +1,6 @@
 ﻿# Release Notes
 
-## 2.5 (2015-MM-DD)
+## 2.5 (2015-11-24)
 This update includes the following changes:
 
 * Use the latest version of the common POM (ets-common-5)
