@@ -47,9 +47,9 @@ public class SuiteFixtureListener implements ISuiteListener {
 
     /**
      * Processes test suite arguments and sets suite attributes accordingly. The
-     * entity referenced by the {@link TestRunArg#IUT iut} argument is parsed
-     * and the resulting Document is set as the value of the "testSubject"
-     * attribute.
+     * entity referenced by the {@link TestRunArg#IUT iut} argument is retrieved
+     * and written to a File that is set as the value of the suite attribute
+     * {@link SuiteAttribute#TEST_SUBJ_FILE testSubjectFile}.
      * 
      * @param suite
      *            An ISuite object representing a TestNG test suite.
@@ -68,6 +68,8 @@ public class SuiteFixtureListener implements ISuiteListener {
         } catch (IOException iox) {
             throw new RuntimeException("Failed to dereference resource located at " + iutRef, iox);
         }
+        TestSuiteLogger.log(Level.FINE, String.format("Wrote test subject to file: %s (%d bytes)",
+                entityFile.getAbsolutePath(), entityFile.length()));
         suite.setAttribute(SuiteAttribute.TEST_SUBJ_FILE.getName(), entityFile);
         Document iutDoc = null;
         try {

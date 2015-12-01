@@ -10,16 +10,10 @@ Visit the [project documentation website](http://opengeospatial.github.io/${arti
 for more information, including the API documentation.
 
 ${symbol_pound}${symbol_pound}${symbol_pound} How to run the tests
-There are several options for executing the test suite.
+The test suite is built using [Apache Maven v3](https://maven.apache.org/). The options 
+for running the suite are summarized below.
 
-${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 1. OGC test harness
-
-Use [TEAM Engine](https://github.com/opengeospatial/teamengine), the official OGC test harness.
-The latest test suite release are usually available at the [beta testing facility](http://cite.opengeospatial.org/te2/). 
-You can also [build and deploy](https://github.com/opengeospatial/teamengine) the test 
-harness yourself and use a local installation.
-
-${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 2. Integrated development environment (IDE)
+${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 1. Integrated development environment (IDE)
 
 Use a Java IDE such as Eclipse, NetBeans, or IntelliJ. Clone the repository and build the project.
 
@@ -43,13 +37,20 @@ You can modify the sample file in `src/main/config/test-run-props.xml`
 The TestNG results file (`testng-results.xml`) will be written to a subdirectory
 in `${symbol_dollar}{user.home}/testng/` having a UUID value as its name.
 
-${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 3. Command shell (console)
+${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 2. Command shell (console)
 
 One of the build artifacts is an "all-in-one" JAR file that includes the test 
 suite and all of its dependencies; this makes it very easy to execute the test 
 suite in a command shell:
 
 `java -jar ets-${ets-code}-${version}-aio.jar [-o|--outputDir ${symbol_dollar}TMPDIR] [test-run-props.xml]`
+
+${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 3. OGC test harness
+
+Use [TEAM Engine](https://github.com/opengeospatial/teamengine), the official OGC test harness.
+The latest test suite release are usually available at the [beta testing facility](http://cite.opengeospatial.org/te2/). 
+You can also [build and deploy](https://github.com/opengeospatial/teamengine) the test 
+harness yourself and use a local installation.
 
 
 ${symbol_pound}${symbol_pound}${symbol_pound} How to contribute

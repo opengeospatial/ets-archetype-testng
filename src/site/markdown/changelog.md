@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 2.6 (YYYY-MM-DD)
+This update includes the following changes:
+
+* Move `SuitePreconditions` class to root package
+
 ## 2.5 (2015-11-24)
 This update includes the following changes:
 

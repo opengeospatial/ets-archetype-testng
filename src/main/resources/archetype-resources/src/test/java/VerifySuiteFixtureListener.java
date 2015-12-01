@@ -7,10 +7,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,7 +21,6 @@ import org.junit.Test;
 import org.mockito.Matchers;
 import org.testng.ISuite;
 import org.testng.xml.XmlSuite;
-import org.w3c.dom.Document;
 
 public class VerifySuiteFixtureListener {
 
@@ -65,8 +66,8 @@ public class VerifySuiteFixtureListener {
         SuiteFixtureListener iut = new SuiteFixtureListener();
         iut.onStart(suite);
         verify(suite).setAttribute(
-                Matchers.eq(SuiteAttribute.TEST_SUBJECT.getName()),
-                Matchers.isA(Document.class));
+                Matchers.eq(SuiteAttribute.TEST_SUBJ_FILE.getName()), 
+                Matchers.isA(File.class));
     }
 
 }
