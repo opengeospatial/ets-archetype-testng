@@ -18,9 +18,5 @@
       <class name="${package}.SuitePreconditions" />
     </classes>
   </test>
-  <test name="Conformance Level 2">
-    <packages>
-      <package name="${package}.level2" />
-    </packages>
-  </test>
+  <!-- Add test sets for other conformance classes/levels -->
 </suite>
