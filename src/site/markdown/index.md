@@ -14,13 +14,13 @@ is always recommended):
 
     groupId: org.opengis.cite
     artifactId: ets-archetype-testng
-    version: 2.5
+    version: 2.6
 
 In order to use the archetype and build the resulting test suite a 
 [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/) 
 (JDK) and [Apache Maven](https://maven.apache.org/) must be installed:
 
-* JDK 7 or higher
+* JDK 8
 * Apache Maven 3.0 or higher
 
 To create a new test suite open a command shell (terminal window) and invoke the interactive 
@@ -46,11 +46,11 @@ Listing 2.
     mvn archetype:generate -B \
         -DarchetypeGroupId=org.opengis.cite \
         -DarchetypeArtifactId=ets-archetype-testng \
-        -DarchetypeVersion=2.5 \
+        -DarchetypeVersion=2.6 \
         -Dets-code=abc10 \
         -DartifactId=ets-abc10 \
         -Dpackage=org.opengis.cite.abc10
 
-Once the initial test suite has been created it must be modified to cover the 
-specific test requirements of interest. See the [TestNG Developer Guide](http://opengeospatial.github.io/teamengine/testng.html) 
+Once the initial test suite has been created it must be modified to cover the specific test 
+requirements of interest. See [Conformance Testing with TestNG, Part 1](http://opengeospatial.github.io/teamengine/testng-essentials.html) 
 for more information about how to get started.
