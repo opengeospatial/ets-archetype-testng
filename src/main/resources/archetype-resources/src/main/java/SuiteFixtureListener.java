@@ -42,7 +42,10 @@ public class SuiteFixtureListener implements ISuiteListener {
 
     @Override
     public void onFinish(ISuite suite) {
-        deleteTempFiles(suite);
+        if (null != System.getProperty("deleteSubjectOnFinish")) {
+            deleteTempFiles(suite);
+            System.getProperties().remove("deleteSubjectOnFinish");
+        }
     }
 
     /**

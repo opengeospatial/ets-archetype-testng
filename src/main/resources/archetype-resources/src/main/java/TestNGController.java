@@ -41,13 +41,14 @@ public class TestNGController implements TestSuiteController {
      * <ul>
      * <li>XML properties file: ${symbol_dollar}{user.home}/test-run-props.xml</li>
      * <li>outputDir: ${symbol_dollar}{user.home}</li>
+     * <li>deleteSubjectOnFinish: false</li>
      * </ul>
      * <p>
      * <strong>Synopsis</strong>
      * </p>
      * 
      * <pre>
-     * ets-*-aio.jar [-o|--outputDir ${symbol_dollar}TMPDIR] [test-run-props.xml]
+     * ets-*-aio.jar [-o|--outputDir ${symbol_dollar}TMPDIR] [-d|--deleteSubjectOnFinish] [test-run-props.xml]
      * </pre>
      *
      * @param args
@@ -60,13 +61,16 @@ public class TestNGController implements TestSuiteController {
      *             unsatisfied pre-conditions).
      */
     public static void main(String[] args) throws Exception {
-        TestRunArguments testRunArgs = new TestRunArguments();
+        CommandLineArguments testRunArgs = new CommandLineArguments();
         JCommander cmd = new JCommander(testRunArgs);
         try {
             cmd.parse(args);
         } catch (ParameterException px) {
             System.out.println(px.getMessage());
             cmd.usage();
+        }
+        if (testRunArgs.doDeleteSubjectOnFinish()) {
+            System.setProperty("deleteSubjectOnFinish", "true");
         }
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -100,7 +104,12 @@ public class TestNGController implements TestSuiteController {
             TestSuiteLogger.log(Level.WARNING, "Unable to load ets.properties. " + ex.getMessage());
         }
         URL tngSuite = TestNGController.class.getResource("testng.xml");
-        File resultsDir = new File(outputDir);
+        File resultsDir;
+        if (null == outputDir || outputDir.isEmpty()) {
+            resultsDir = new File(System.getProperty("user.home"));
+        } else {
+            resultsDir = new File(outputDir);
+        }
         TestSuiteLogger.log(Level.CONFIG, "Using TestNG config: " + tngSuite);
         TestSuiteLogger.log(Level.CONFIG, "Using outputDirPath: " + resultsDir.getAbsolutePath());
         // NOTE: setting third argument to 'true' enables the default listeners

@@ -16,25 +16,29 @@ import java.util.List;
  * <ul>
  * <li>XML properties file: ${symbol_dollar}{user.home}/test-run-props.xml</li>
  * <li>outputDir: ${symbol_dollar}{user.home}</li>
+ * <li>deleteSubjectOnFinish: false</li>
  * </ul>
  *
  * <p>
  * <strong>Synopsis</strong>
  * </p>
- * 
+ *
  * <pre>
- * ets-${symbol_dollar}{ets-code}-${symbol_dollar}{version}-aio.jar [-o|--outputDir ${symbol_dollar}TMPDIR] [test-run-props.xml]
+ * ets-${symbol_dollar}{ets-code}-${symbol_dollar}{version}-aio.jar [-o|--outputDir ${symbol_dollar}TMPDIR] [-d|--deleteSubjectOnFinish] [test-run-props.xml]
  * </pre>
  */
-public class TestRunArguments {
+public class CommandLineArguments {
 
     @Parameter(description = "Properties file")
     private final List<String> xmlProps;
 
-    @Parameter(names = { "-o", "--outputDir" }, description = "Output directory")
+    @Parameter(names = {"-o", "--outputDir"}, description = "Output directory")
     private String outputDir;
 
-    public TestRunArguments() {
+    @Parameter(names = {"-d", "--deleteSubjectOnFinish"}, description = "Delete file containing representation of test subject when finished")
+    private boolean deleteSubjectOnFinish = false;
+
+    public CommandLineArguments() {
         this.xmlProps = new ArrayList<>();
     }
 
@@ -51,5 +55,9 @@ public class TestRunArguments {
 
     public String getOutputDir() {
         return (null != outputDir) ? outputDir : System.getProperty("user.home");
+    }
+
+    public boolean doDeleteSubjectOnFinish() {
+        return deleteSubjectOnFinish;
     }
 }
