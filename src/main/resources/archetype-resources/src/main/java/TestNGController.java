@@ -6,6 +6,7 @@ package ${package};
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,11 +83,11 @@ public class TestNGController implements TestSuiteController {
     }
 
     /**
-     * Default constructor uses the location given by the "user.home" system
-     * property as the root output directory.
+     * Default constructor uses the location given by the "java.io.tmpdir"
+     * system property as the root output directory.
      */
     public TestNGController() {
-        this(System.getProperty("user.home"));
+        this(System.getProperty("java.io.tmpdir"));
     }
 
     /**
@@ -94,7 +95,8 @@ public class TestNGController implements TestSuiteController {
      * 
      * @param outputDir
      *            The location of the directory in which test results will be
-     *            written; it will be created if it does not exist.
+     *            written (a file system path or a 'file' URI). It will be
+     *            created if it does not exist.
      */
     public TestNGController(String outputDir) {
         InputStream is = getClass().getResourceAsStream("ets.properties");
@@ -107,6 +109,8 @@ public class TestNGController implements TestSuiteController {
         File resultsDir;
         if (null == outputDir || outputDir.isEmpty()) {
             resultsDir = new File(System.getProperty("user.home"));
+        } else if (outputDir.startsWith("file:")) {
+            resultsDir = new File(URI.create(outputDir));
         } else {
             resultsDir = new File(outputDir);
         }
