@@ -1,6 +1,7 @@
 #set( $symbol_dollar = '$' )
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="${symbol_dollar}{ets-code}-${symbol_dollar}{version}" verbose="0" configfailurepolicy="continue">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="${ets-code}-${symbol_dollar}{version}" verbose="0" configfailurepolicy="continue">
   <parameter name="iut"  value=""/>
   <parameter name="ics"  value=""/>
 
