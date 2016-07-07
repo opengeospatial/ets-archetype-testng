@@ -1,11 +1,12 @@
 ﻿# Release Notes
 
-## 2.6 (2016-07-DD)
-This update includes the following changes:
+## 2.6 (2016-07-07)
+This minor update includes the following changes:
 
-* Use parent POM ets-common-7 (depends on teamengine-spi-4.7)
-* Replace TestRunArguments class in root package with CommandLineArguments
+* Update parent POM to ets-common-7 (depends on `teamengine-spi-4.7`)
+* Replace the TestRunArguments class in root package with CommandLineArguments
 * Move `SuitePreconditions` class to root package
+* Add DOCTYPE declaration to testng.xml
 
 ## 2.5 (2015-11-24)
 This update includes the following changes:
