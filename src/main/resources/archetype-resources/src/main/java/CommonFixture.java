@@ -74,9 +74,7 @@ public class CommonFixture {
      * be null).
      * @return A Document representing the entity.
      *
-     * @see
-     * ClientUtils#getResponseEntityAsDocument(com.sun.jersey.api.client.ClientResponse,
-     * java.lang.String)
+     * @see ClientUtils#getResponseEntityAsDocument
      */
     public Document getResponseEntityAsDocument(ClientResponse response,
             String targetURI) {
@@ -94,8 +92,7 @@ public class CommonFixture {
      * generic XML ("application/xml") is preferred.
      * @return A ClientRequest object.
      *
-     * @see ClientUtils#buildGetRequest(java.net.URI, java.util.Map,
-     * javax.ws.rs.core.MediaType...)
+     * @see ClientUtils#buildGetRequest
      */
     public ClientRequest buildGetRequest(URI endpoint,
             Map<String, String> qryParams, MediaType... mediaTypes) {
