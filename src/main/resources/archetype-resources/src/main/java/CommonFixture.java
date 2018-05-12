@@ -25,7 +25,7 @@ public class CommonFixture {
     /**
      * Root test suite package (absolute path).
      */
-    public static final String ROOT_PKG_PATH = "/org/opengis/cite/${ets-code}/";
+    public static final String ROOT_PKG_PATH = "/${packageInPathFormat}/";
     /**
      * HTTP client component (JAX-RS Client API).
      */
