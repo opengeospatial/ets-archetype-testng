@@ -33,7 +33,7 @@ import org.w3c.dom.ls.LSResourceResolver;
  */
 public class ValidationUtils {
 
-    static final String ROOT_PKG = "/org/opengis/cite/${ets-code}/";
+    static final String ROOT_PKG = "/${packageInPathFormat}/";
     private static final XMLCatalogResolver SCH_RESOLVER = initCatalogResolver();
 
     private static XMLCatalogResolver initCatalogResolver() {

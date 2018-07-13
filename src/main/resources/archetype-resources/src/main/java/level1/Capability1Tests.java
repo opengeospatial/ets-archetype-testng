@@ -85,7 +85,7 @@ public class Capability1Tests extends CommonFixture {
     @Test(description = "Implements ATC 1-3")
     public void docIsValidAtomFeed() throws SAXException, IOException {
         URL schemaRef = getClass().getResource(
-                "/org/opengis/cite/${ets-code}/rnc/atom.rnc");
+                "/${packageInPathFormat}/rnc/atom.rnc");
         RelaxNGValidator rngValidator = new RelaxNGValidator(schemaRef);
         Source xmlSource = (null != testSubject)
                 ? new DOMSource(testSubject) : null;
