@@ -9,6 +9,9 @@
     <requiredProperty key="ets-title">
       <defaultValue>Test suite: ets-${ets-code}</defaultValue>
     </requiredProperty>
+    <requiredProperty key="ets-title-short">
+      <defaultValue>${ets-code}</defaultValue>
+    </requiredProperty>
     <requiredProperty key="groupId">
       <defaultValue>org.opengis.cite</defaultValue>
     </requiredProperty>

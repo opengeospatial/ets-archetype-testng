@@ -14,7 +14,7 @@
   <version>${version}</version>
   <packaging>jar</packaging>
 
-  <name>${ets-title}</name>
+  <name>${ets-title-short} Conformance Test Suite</name>
   <description>Describe purpose of test suite.</description>
   <url>http://opengeospatial.github.io/${artifactId}/</url>
   <licenses>

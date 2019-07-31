@@ -1,6 +1,6 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
-${symbol_pound}${symbol_pound} ${ets-title}
+${symbol_pound}${symbol_pound} ${ets-title-short} Conformance Test Suite
 
 ${symbol_pound}${symbol_pound}${symbol_pound} Scope
 
