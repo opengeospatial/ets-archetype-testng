@@ -81,6 +81,12 @@
       <directory>src/site/resources</directory>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/docker</directory>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>jenkinsfiles</directory>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
       <includes>
         <include>README.md</include>
