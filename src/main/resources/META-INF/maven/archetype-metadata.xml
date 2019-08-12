@@ -9,6 +9,9 @@
     <requiredProperty key="ets-title">
       <defaultValue>Test suite: ets-${ets-code}</defaultValue>
     </requiredProperty>
+    <requiredProperty key="ets-title-short">
+      <defaultValue>${ets-code}</defaultValue>
+    </requiredProperty>
     <requiredProperty key="groupId">
       <defaultValue>org.opengis.cite</defaultValue>
     </requiredProperty>
@@ -79,6 +82,12 @@
     </fileSet>
     <fileSet filtered="false" encoding="UTF-8">
       <directory>src/site/resources</directory>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/docker</directory>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>jenkinsfiles</directory>
     </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
