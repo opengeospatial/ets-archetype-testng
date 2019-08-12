@@ -267,9 +267,9 @@
                 </goals>
               </execution>
             </executions>
-      </plugin>
-    </plugins>
-  </build>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
     <profile>
       <id>docker</id>
@@ -342,7 +342,7 @@
     </repository>
     <site>
       <id>site</id>
-      <url>scm:git:git@github.com:opengeospatial/ets-wfs30.git</url>
+      <url>scm:git:git@github.com:opengeospatial/${artifactId}.git</url>
     </site>
   </distributionManagement>
 </project>
