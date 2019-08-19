@@ -14,7 +14,7 @@ is always recommended):
 
     groupId: org.opengis.cite
     artifactId: ets-archetype-testng
-    version: 2.6
+    version: 2.7
 
 In order to use the archetype and build the resulting test suite a 
 [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/) 
@@ -46,8 +46,10 @@ Listing 2.
     mvn archetype:generate -B \
         -DarchetypeGroupId=org.opengis.cite \
         -DarchetypeArtifactId=ets-archetype-testng \
-        -DarchetypeVersion=2.6 \
+        -DarchetypeVersion=2.7 \
         -Dets-code=abc10 \
+        -Dets-title='Web Test Service (WTS)' \
+        -Dets-title-short='WTS 1.0' \
         -DartifactId=ets-abc10 \
         -Dpackage=org.opengis.cite.abc10
 
