@@ -1,5 +1,11 @@
 ﻿# Release Notes
 
+## 2.7 (2019-08-19)
+
+* [#9](https://github.com/opengeospatial/ets-archetype-testng/issues/9) - Update archetype
+* [#7](https://github.com/opengeospatial/ets-archetype-testng/issues/7) - Tests fail if package name is not org.opengis.cite.{ets-code}
+* [#5](https://github.com/opengeospatial/ets-archetype-testng/issues/5) - Exception generating template
+
 ## 2.6 (2016-07-07)
 This minor update includes the following changes:
 
